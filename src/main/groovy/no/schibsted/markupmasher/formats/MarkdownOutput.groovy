@@ -1,5 +1,7 @@
 package no.schibsted.markupmasher.formats
 
+import static no.schibsted.markupmasher.formats.FormatUtils.escapeURL
+
 class MarkdownOutput implements OutputFormat {
     String opening(Map markup) {
         switch(markup.type) {
@@ -15,7 +17,7 @@ class MarkdownOutput implements OutputFormat {
         switch(markup.type) {
             case 'style:strong': return '**'
             case 'style:em': return '_'
-            case 'link:external': return "](${markup.uri})"
+            case 'link:external': return "](${escapeURL(markup.uri)})"
             default:
                 return ''
         }
