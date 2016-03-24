@@ -6,7 +6,7 @@ A small library for wrangling the SMP Bench "markup" styling format.
 
 # Usage
 
-Use [jitpack.io](https://jitpack.io/docs/) to get the dependency in, and then (from Groovy):
+Use [jitpack.io](https://jitpack.io/#Schibsted-Tech-Polska/markup-masher) to get the dependency in, and then (from Groovy):
 
 ```groovy
 import no.schibsted.markupmasher.MarkupMasher;
