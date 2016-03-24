@@ -20,11 +20,12 @@ class MarkupTrackingString {
         def startMarker = new Marker(MarkerType.OPENING, start, markup)
         def endMarker = new Marker(MarkerType.CLOSING, end, markup)
 
+        // detect and remove styling that would cause mismatched open/close tags
         def rangeBetween = markers.subSet(startMarker, endMarker)
         def openersInRange = rangeBetween.count { it.type == MarkerType.OPENING }
         def closersInRange = rangeBetween.count { it.type == MarkerType.CLOSING }
         if (openersInRange != closersInRange) {
-            // mismatched/criss-crossing styling, ignore this entry
+            // found mismatched/criss-crossing styling, ignore this entry
             return
         }
 
@@ -62,8 +63,10 @@ class MarkupTrackingString {
         @Override
         int compareTo(Marker o) {
             if (index != o.index) {
+                // by index ascending
                 return index - o.index
             } else {
+                // CLOSING markers before OPENING markers at the same index
                 return o.type.ordinal() - type.ordinal()
             }
         }
