@@ -1,6 +1,8 @@
 apply plugin: 'groovy'
 apply plugin: 'maven'
 
+group = 'com.github.Schibsted-Tech-Polska'
+
 repositories {
     jcenter()
 }
