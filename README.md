@@ -1,6 +1,7 @@
 # markup-masher
 
 [![Release](https://jitpack.io/v/Schibsted-Tech-Polska/markup-masher.svg)](https://jitpack.io/#Schibsted-Tech-Polska/markup-masher)
+[![Build Status](https://travis-ci.org/Schibsted-Tech-Polska/markup-masher.svg?branch=master)](https://travis-ci.org/Schibsted-Tech-Polska/markup-masher)
 
 A small library for wrangling the SMP Bench "markup" styling format.
 
