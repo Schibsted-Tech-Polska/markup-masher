@@ -15,6 +15,13 @@ class MarkupMasherHTMLSpec extends Specification{
             result == original
     }
 
+    def "should return empty string if null text was passed"() {
+        when:
+            String result = mm.toHTML(null, null)
+        then:
+            result == ''
+    }
+
     def "should apply bold correctly"() {
         given:
         String original = "Hello world."

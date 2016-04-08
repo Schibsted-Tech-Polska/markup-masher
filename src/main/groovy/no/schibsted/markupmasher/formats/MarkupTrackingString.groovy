@@ -36,6 +36,9 @@ class MarkupTrackingString {
         StringBuilder sb = new StringBuilder()
         int lastIndex = 0
 
+        // nothing to do here.
+        if(!shouldFormat()) return baseString ?: ''
+
         // add text interspersed with the needed markers
         markers.each { m ->
             sb.append(baseString.substring(lastIndex, m.index))
@@ -51,6 +54,11 @@ class MarkupTrackingString {
 
         // done!
         return sb.toString()
+    }
+
+    private Boolean shouldFormat() {
+        baseString != null && baseString.size() > 0 &&
+        markers.size() > 0
     }
 
     @TupleConstructor
