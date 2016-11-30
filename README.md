@@ -26,3 +26,7 @@ You can use it from Java too - the only hick-up is that it'll be trickier to obt
 The format we accept is what Groovy's JSONSlurper produces - a simple untyped List of Maps, with each map being
 a markup definition.
 
+## How to release?
+
+After commiting your changes `git tag` your release and it will be automatically deployed to [jitpack](https://jitpack.io/#Schibsted-Tech-Polska/markup-masher),
+
