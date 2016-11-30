@@ -8,6 +8,7 @@ class MarkdownOutput implements OutputFormat {
             case 'style:strong': return '**'
             case 'style:em': return '_'
             case 'link:external': return "["
+            case 'link:internal': return "["
             default:
                 return ''
         }
@@ -18,6 +19,7 @@ class MarkdownOutput implements OutputFormat {
             case 'style:strong': return '**'
             case 'style:em': return '_'
             case 'link:external': return "](${escapeURL(markup.uri)})"
+            case 'link:internal': return "](${escapeURL(markup.presentationUrl)})"
             default:
                 return ''
         }
