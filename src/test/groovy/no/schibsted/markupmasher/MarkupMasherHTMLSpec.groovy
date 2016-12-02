@@ -42,7 +42,7 @@ class MarkupMasherHTMLSpec extends Specification{
         result == "Hello <em>world</em>."
     }
 
-    def "should apply links correctly"() {
+    def "should apply external links correctly"() {
         given:
         String original = "Hello world."
         List markup = [[offset:6, length:5, type: 'link:external', uri: 'http://google.pl']]
@@ -50,6 +50,30 @@ class MarkupMasherHTMLSpec extends Specification{
         String result = mm.toHTML(original, markup)
         then:
         result == 'Hello <a href="http://google.pl">world</a>.'
+    }
+
+    def "should apply internal links correctly"() {
+        given:
+        def rawText = "Hello."
+        def markup = [
+                [offset: 0, length: 6, type: 'link:internal', presentationUrl: 'http://is.it.me.youre.looking.for?']
+        ]
+        when:
+        def html = mm.toHTML(rawText, markup)
+        then:
+        html == '<a href="http://is.it.me.youre.looking.for?">Hello.</a>'
+    }
+
+    def "should fall back to empty string when there is no presentation url"() {
+        given:
+        def rawText = "Hello."
+        def markup = [
+                [offset: 0, length: 6, type: 'link:internal']
+        ]
+        when:
+        def html = mm.toHTML(rawText, markup)
+        then:
+        html == '<a href="">Hello.</a>'
     }
 
     def "should apply multiple styles to one string correctly"() {

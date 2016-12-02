@@ -8,7 +8,7 @@ class HTMLOutput implements OutputFormat {
             case 'style:strong': return '<strong>'
             case 'style:em': return '<em>'
             case 'link:external': return "<a href=\"${escapeURL(markup.uri)}\">"
-            case 'link:internal': return "<a href=\"${escapeURL(markup.presentationUrl)}\">"
+            case 'link:internal': return "<a href=\"${escapeURL(markup.presentationUrl ?: "")}\">"
             default:
                 return ''
         }
